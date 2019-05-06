@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Veldrid.Extensions
 {
-    internal static class ObservableExtensions
+    public static class ObservableExtensions
     {
         #region Polling pattern
         // Implementation details are irrelevant to users
