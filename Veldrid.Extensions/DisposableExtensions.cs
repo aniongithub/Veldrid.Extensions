@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Veldrid.Fluent
+namespace Veldrid.Extensions
 {
     public static class DisposableExtensions
     {

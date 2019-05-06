@@ -6,7 +6,7 @@ using System.Reactive.Disposables;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Veldrid.Fluent
+namespace Veldrid.Extensions
 {
     internal static class ObservableExtensions
     {

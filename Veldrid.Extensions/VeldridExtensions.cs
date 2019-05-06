@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using Veldrid;
-using Veldrid.Fluent;
+using Veldrid.Extensions;
 using Veldrid.ImageSharp;
 using Veldrid.Sdl2;
 using Veldrid.StartupUtilities;

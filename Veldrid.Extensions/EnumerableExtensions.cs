@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Veldrid.Fluent
+namespace Veldrid.Extensions
 {
     public static class EnumerableExtensions
     {

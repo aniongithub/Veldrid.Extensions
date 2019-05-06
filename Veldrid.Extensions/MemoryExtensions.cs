@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Veldrid.Fluent
+namespace Veldrid.Extensions
 {
     public static class MemoryExtensions
     {

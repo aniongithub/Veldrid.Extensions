@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace Veldrid.Fluent
+namespace Veldrid.Extensions
 {
     public class Pool<T> : IEnumerable<T>, IDisposable where T: IDisposable
     {

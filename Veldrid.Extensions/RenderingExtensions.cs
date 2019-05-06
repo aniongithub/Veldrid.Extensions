@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Reactive;
 using System.Collections.Concurrent;
 
-namespace Veldrid.Fluent
+namespace Veldrid.Extensions
 {
     // TODO: Implement IDisposable
     public interface IRenderingPipeline
