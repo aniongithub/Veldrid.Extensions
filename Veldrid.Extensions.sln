@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veldrid.Extensions", "Veldrid.Extensions\Veldrid.Extensions.csproj", "{C60B5A9B-2539-4C48-8F5D-A6789E4BD696}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{400E2EA4-6E89-428F-A100-281635C348FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleRenderingLoop", "Examples\SimpleRenderingLoop\SimpleRenderingLoop.csproj", "{03EE5EDD-FC89-4589-974F-39A58A698864}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderingPipeline", "Examples\RenderingPipeline\RenderingPipeline.csproj", "{2A5E6134-E9D5-423D-A7AB-E5FC4A58BA43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,11 +21,23 @@ Global
 		{C60B5A9B-2539-4C48-8F5D-A6789E4BD696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C60B5A9B-2539-4C48-8F5D-A6789E4BD696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C60B5A9B-2539-4C48-8F5D-A6789E4BD696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03EE5EDD-FC89-4589-974F-39A58A698864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03EE5EDD-FC89-4589-974F-39A58A698864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03EE5EDD-FC89-4589-974F-39A58A698864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03EE5EDD-FC89-4589-974F-39A58A698864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A5E6134-E9D5-423D-A7AB-E5FC4A58BA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A5E6134-E9D5-423D-A7AB-E5FC4A58BA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A5E6134-E9D5-423D-A7AB-E5FC4A58BA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A5E6134-E9D5-423D-A7AB-E5FC4A58BA43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E3F3B6A-6CBC-4F7C-8DB8-04812888A35F}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03EE5EDD-FC89-4589-974F-39A58A698864} = {400E2EA4-6E89-428F-A100-281635C348FF}
+		{2A5E6134-E9D5-423D-A7AB-E5FC4A58BA43} = {400E2EA4-6E89-428F-A100-281635C348FF}
 	EndGlobalSection
 EndGlobal

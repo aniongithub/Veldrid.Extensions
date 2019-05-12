@@ -9,12 +9,11 @@ namespace Veldrid.Extensions
     {
         private ConcurrentBag<T> _available;
         private Func<T> _generator;
-        private Action<T> _disposer;
         private ulong _capacity;
 
         public Pool(Func<T> generator)
         {
-            if (generator == null) throw new ArgumentNullException("objectGenerator");
+            if (generator == null) throw new ArgumentNullException(nameof(generator));
             _available = new ConcurrentBag<T>();
             _generator = generator;
         }
@@ -27,6 +26,14 @@ namespace Veldrid.Extensions
 
             _capacity++;
             return new DisposableWrapper<T>(_generator(), val => Put(val));
+        }
+
+        public IDisposable<T> Take(out T value)
+        {
+            var result = Take();
+            value = result.Value;
+
+            return result;
         }
 
         public void Put(T item)

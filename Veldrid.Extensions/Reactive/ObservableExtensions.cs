@@ -2,11 +2,13 @@
 using Nito.AsyncEx;
 using System;
 using System.IO;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Reactive.Disposables;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Veldrid.Extensions
+namespace Veldrid.Extensions.Reactive
 {
     public static class ObservableExtensions
     {
@@ -78,7 +80,7 @@ namespace Veldrid.Extensions
 
             public void Dispose()
             {
-                // Make sure 
+                // Cancel game loop
                 if (!_cts.IsCancellationRequested)
                     _cts.Cancel();
 
@@ -101,67 +103,18 @@ namespace Veldrid.Extensions
 
         #endregion`
 
-        #region JSON config file
+        #region File watcher
 
-        internal class JsonFileWatcher<T> : IObservable<T>, IDisposable
+        public static IObservable<FileSystemEventArgs> ObserveChanges<T>(this string filename)
         {
-            private readonly FileSystemWatcher _fsw = new FileSystemWatcher { EnableRaisingEvents = false };
-            private IObserver<T> _observer;
-            private StreamReader _reader;
-
-            public JsonFileWatcher(string filename)
-            {
-                // Open in non-exclusive read mode
-                _reader = new StreamReader(File.Open(filename,
-                    FileMode.Open,
-                    FileAccess.Read,
-                    FileShare.ReadWrite));
-                _fsw.Path = Path.GetDirectoryName(filename);
-                _fsw.Filter = Path.GetFileName(filename);
-                _fsw.Changed += (sender, e) =>
-                {
-                    try
-                    {
-                        Thread.Sleep(250);
-
-                        _reader.BaseStream.Seek(0, SeekOrigin.Begin);
-                        var readText = _reader.ReadToEnd();
-                        _observer?.OnNext(JsonConvert.DeserializeObject<T>(readText));
-                    }
-                    catch (Exception ex)
-                    {
-                        _observer?.OnError(ex);
-                    }
-                };
-            }
-
-            public void Dispose()
-            {
-                _fsw.Dispose();
-                _reader.Dispose();
-                _observer?.OnCompleted();
-            }
-
-            public IDisposable Subscribe(IObserver<T> observer)
-            {
-                _observer = observer;
-                _fsw.EnableRaisingEvents = true;
-
-                // Raise event with current data for new subscribers
-                _reader.BaseStream.Seek(0, SeekOrigin.Begin);
-                _observer?.OnNext(JsonConvert.DeserializeObject<T>(_reader.ReadToEnd()));
-
-                return Disposable.Create(() =>
-                {
-                    _fsw.EnableRaisingEvents = false;
-                    _observer = null;
-                });
-            }
-        }
-
-        public static IObservable<T> FromJSONFile<T>(this string filename)
-        {
-            return new JsonFileWatcher<T>(filename);
+            var fsw = new FileSystemWatcher(Path.GetDirectoryName(filename), Path.GetFileName(filename)) 
+            { 
+                EnableRaisingEvents = true 
+            };
+            return Observable.FromEvent<FileSystemEventHandler, FileSystemEventArgs>(
+                handler => (sender, e) => handler(e),
+                fsHandler => fsw.Changed += fsHandler,
+                fsHandler => fsw.Changed -= fsHandler);
         }
 
         #endregion

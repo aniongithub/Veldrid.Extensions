@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Veldrid.Extensions\Veldrid.Extensions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Veldrid" Version="4.6.1" />
+    <PackageReference Include="Veldrid.SDL2" Version="4.6.1" />
+    <PackageReference Include="Veldrid.ImageSharp" Version="4.6.1" />
+    <PackageReference Include="Veldrid.ImGui" Version="5.69.0" />
+    <PackageReference Include="Veldrid.StartupUtilities" Version="4.6.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="textures\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="shaders\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Veldrid.Extensions\Veldrid.Extensions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Veldrid" Version="4.6.1" />
+    <PackageReference Include="Veldrid.SDL2" Version="4.6.1" />
+    <PackageReference Include="Veldrid.StartupUtilities" Version="4.6.1" />
+  </ItemGroup>
+</Project>
